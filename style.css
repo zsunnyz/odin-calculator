@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calc-container {
+    min-width: min(550px, 30vw);
+    width: 550px;
+    height: 450px;
+}
+#button-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+    gap: 2%;
+}
+
+button{
+    text-align: center;
+    font-size: large;
+    width: 100%;
+    max-width: 120px;
+    min-width: 40px;
+    padding-bottom: 15%;
+    padding-top: 15%;
+    border-radius: 2vmin;
+    -webkit-border-radius: 2vmin;
+    -moz-border-radius: 2vmin;
+    -ms-border-radius: 2vmin;
+    -o-border-radius: 2vmin;
+    -webkit-border-radius: 30p;
+}
