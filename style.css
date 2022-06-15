@@ -3,18 +3,61 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    box-sizing: border-box;
 }
 
 #calc-container {
-    width: min(100vw, 550px);
-    height: 450px;
+    width: 500px;
+    min-width: 160px;
+    padding: 15px;
+    background-color: #57DEFC;
+    border: 4px solid #02717D;
+
+    box-shadow: 0px 4px 15px 5px rgba(87, 222, 252, 75%);
+
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+
+#display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 50px;
+    background-color: white;
+
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#display > div {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#prev-line {
+    flex: 1 1 0;
+}
+
+#curr-line {
+    flex: 2 1 0;
 }
 
 #button-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 2%;
+    margin-bottom: -4%;
 }
     
 #button-container > button {
@@ -23,14 +66,18 @@ body {
 
 button{
     text-align: center;
-    font-size: large;
+    font-size: min(calc(24px + 1.5vw), 45px);
     width: 100%;
     max-width: 120px;
     min-width: 40px;
-    padding-bottom: 15%;
-    padding-top: 15%;
+    padding-bottom: 7%;
+    padding-top: 7%;
+    margin: 2px;
 
     cursor: pointer;
+
+    box-shadow: 0px 4px 1px 0px rgba(2, 113, 125, 25%);
+    border-width: 0px;
 
     border-radius: 2vmin;
     -webkit-border-radius: 2vmin;
@@ -38,4 +85,18 @@ button{
     -ms-border-radius: 2vmin;
     -o-border-radius: 2vmin;
     -webkit-border-radius: 30p;
+}
+
+.clear {
+    background-color: #57FCC8;
+    color: white;
+}
+
+.num {
+    color: #02717D;
+}
+
+.operator {
+    background-color: #26CFF4;
+    color: #DDFFF2;
 }

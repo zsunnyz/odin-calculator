@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script src="./calculator.js" defer></script> 
+    
+    <style type="text/css">
+    @font-face {
+        font-family: "Seven Segment";
+        src: url("./Seven Segment.ttf") format("truetype");
+    }
+    #display > * {
+        font-family: "Seven Segment";
+    }
+    </style> 
+    
     <link rel="stylesheet" href="./style.css">
     <title>calculator</title>
 </head>
 <body>
     <div id="calc-container">
-        <div id="display"></div>
+        <div id="display">
+            <div id="prev-line">123</div>
+            <div id="curr-line">+1234</div>
+        </div>
         <div id="button-container">
             <button id="ce" class="clear">CE</button>
             <button id="ac" class="clear">AC</button>
