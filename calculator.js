@@ -1,6 +1,7 @@
 let currentLine = "";
 let previousLine = "";
 let currentOperator = "";
+let result = false;
 
 numButtons = document.getElementsByClassName("num");
 Array.prototype.forEach.call(numButtons, button => {
@@ -11,6 +12,42 @@ Array.prototype.forEach.call(numButtons, button => {
         }
     });
 });
+
+operatorButtons = document.getElementsByClassName("operator");
+Array.prototype.forEach.call(operatorButtons, button => {
+    button.addEventListener("click", () => {
+        if (currentLine != ""){
+            currentOperator = button.textContent;
+            if (previousLine == "" || previousLine == "overflow") {
+                previousLine = currentLine;
+                currentLine = "";
+            }
+            else if (result) {
+                previousLine = currentLine;
+                currentLine = "";
+                result = false;
+            }
+        } 
+        updateLine()
+    })
+})
+
+document.getElementById("eq").addEventListener("click", () => {
+    switch (currentOperator) {
+        case "÷":
+            onOperate((Number(previousLine) / Number(currentLine)).toString());
+            break;
+        case "×":
+            onOperate((Number(previousLine) * Number(currentLine)).toString());
+            break;
+        case "-":
+            onOperate((Number(previousLine) - Number(currentLine)).toString());
+            break;
+        case "+":
+            onOperate((Number(previousLine) + Number(currentLine)).toString());
+            break;
+    }
+})
 
 document.getElementById("dot").addEventListener("click", () => {
     if (currentLine.length == 0){
@@ -25,6 +62,7 @@ document.getElementById("dot").addEventListener("click", () => {
 document.getElementById("ac").addEventListener("click", () => {
     currentLine = "";
     previousLine = "";
+    currentOperator = "";
     updateLine();
 })
 
@@ -40,13 +78,30 @@ document.getElementById("backspace").addEventListener("click", () => {
     }
 })
 
+function onOperate(val){
+    if (val.indexOf('.') >= 14 || (!val.includes('.') && val.length > 14)) {
+        currentLine = previousLine;
+        previousLine = "overflow";
+        currentOperator = ""
+        updateLine();
+        return
+    }
+    else if (val.length > 14 && val.includes('.')){
+        val = (Number(val).toPrecision(14)).toString();
+    } 
+    document.getElementById('prev-line').innerHTML = previousLine + currentOperator + currentLine; 
+    currentLine = val;
+    result = true;
+    document.getElementById('curr-line').innerHTML = currentLine;
+}
+
 function lineLength(){
     return currentLine.includes('.') ? currentLine.length-1 : currentLine.length; 
 }
 
 function updateLine(){
     document.getElementById('curr-line').innerHTML = currentLine;
-    document.getElementById('prev-line').innerHTML = previousLine;
+    document.getElementById('prev-line').innerHTML = previousLine + currentOperator;
 }
 
 function negate(){
