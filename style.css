@@ -82,18 +82,41 @@ button{
     padding-bottom: 7%;
     padding-top: 7%;
     margin: 2px;
-
+    
     cursor: pointer;
+    user-select: none;
 
     box-shadow: 0px 4px 1px 0px rgba(2, 113, 125, 25%);
     border-width: 0px;
-
     border-radius: 2vmin;
     -webkit-border-radius: 2vmin;
     -moz-border-radius: 2vmin;
     -ms-border-radius: 2vmin;
     -o-border-radius: 2vmin;
     -webkit-border-radius: 30p;
+    
+    position: relative;
+    top: 0;
+
+    transition: top ease 0.1s;
+    -webkit-transition: top ease 0.1s;
+    -moz-transition: top ease 0.1s;
+    -ms-transition: top ease 0.1s;
+    -o-transition: top ease 0.1s;
+
+}
+
+button:hover {
+    top: -2px;
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+}
+
+button:active{
+    top:1px;
 }
 
 .clear {
