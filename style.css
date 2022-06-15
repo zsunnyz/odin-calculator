@@ -125,6 +125,8 @@ button:active{
 }
 
 .num, #dot, #neg, #eq{
+    background-color: white;
+    border: none;
     color: #02717D;
 }
 
